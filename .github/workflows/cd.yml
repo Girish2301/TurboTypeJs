@@ -1,0 +1,16 @@
+name: Continuous Deployment (Prod)
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Docker build, Docker Hub login, and Kubernetes manifest update steps
+      # have been removed. Deployment is now handled outside this repository.
